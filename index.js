@@ -36,11 +36,18 @@ async function run() {
 
 
     // APIs
+    // InboxMessageCollection
+    // POST single
     app.post('/contactMsg',async(req,res)=>{
         const newMsg=req.body
         const result=await InboxMessageCollection.insertOne(newMsg)
 
         res.send(result)
+    })
+    // GET all
+    app.get('/contactMsg',async(req,res)=>{
+      const result=await InboxMessageCollection.find().toArray()
+      res.send(result)
     })
 
 
